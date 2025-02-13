@@ -24,7 +24,7 @@ let restartButton;
 let hasWon = false; // Track if the player has won
 let totalScrolls = 3; // Total scrolls that can appear in the game
 
-let canineSpeedIncrease = 0; // Track increase in the stupid canine's speed after winning
+let canineSpeedIncrease = 0; // Track increase in the stupid speed after winning
 
 function preload() {
   bg = loadImage('background.png');
@@ -144,7 +144,7 @@ function draw() {
   }
   pop();
 
-  // Display scrolls and check for the stupid collisions
+  // Display scrolls and check for the collisions
   for (let scroll of scrolls) {
     scroll.display();
   }
@@ -156,12 +156,12 @@ function draw() {
     }
   }
 
-  // Display that damn canine and check for collisions
+  // Display canine and check for collisions
   for (let canine of canines) {
     canine.update();
     canine.display();
     if (dist(ninjaX + ninjaWidth / 2, ninjaY + ninjaHeight / 2, canine.x + ninjaWidth / 2, canine.y + ninjaHeight / 2) < ninjaWidth / 2) {
-      loseScreen = true; // Trigger lose screen if ninja hits the stupid canine
+      loseScreen = true; // Trigger lose screen if ninja hits the canine
     }
   }
 
@@ -207,7 +207,7 @@ function restartGame() {
     let scrollY = random(spawnY - jumpHeight, spawnY - 20);
     scrolls.push(new Scroll(scrollX, scrollY));
 
-    // Increase the speed of the stupid canine after winning
+    // Increase the speed of the canine after winning
     canineSpeedIncrease += 0.5;
     hasWon = false;
   }
